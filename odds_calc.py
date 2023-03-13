@@ -13,7 +13,7 @@ def us_odds(odds: int) -> str:
     """
     Returns implied probability for US-style odds
     """
-    if odds == 100:
-        odds = -100
-    return str((-1* (odds)) / (-1 * (odds) + 100)) + "%"
+    if odds < 0:
+        return str((-odds / (-odds + 100)) * 100) + "%"
+    return str((100 / (odds + 100)) * 100) + "%"
 print(us_odds(ODDS))
